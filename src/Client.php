@@ -2,10 +2,14 @@
 
 namespace MapboxApi;
 
+use BadMethodCallException;
+use Error;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin;
 use Http\Client\Common\Plugin\QueryDefaultsPlugin;
 use Http\Discovery\Psr17FactoryDiscovery;
+use InvalidArgumentException;
+use MapboxApi\Api\AbstractApi;
 use MapboxApi\HttpClient\Builder;
 use Psr\Http\Client\ClientInterface;
 
@@ -69,6 +73,51 @@ class Client
         $builder = new Builder($httpClient);
 
         return new self($accessToken, $builder);
+    }
+
+    /**
+     * @param string $name
+     * @param array  $args
+     *
+     * @return AbstractApi
+     */
+    public function __call($name, $arguments): AbstractApi
+    {
+        try {
+            return $this->api($name);
+        } catch (InvalidArgumentException $e) {
+            throw new BadMethodCallException($e->getMessage());
+        }
+    }
+
+    /**
+     * @param string $name
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return AbstractApi
+     */
+    public function api($name): AbstractApi
+    {
+        $class = $this->resolveClassPath($name);
+    
+        try {
+            return new $class($this);
+        } catch (Error $e) {
+            throw new InvalidArgumentException(sprintf('Undefined API instance: "%s"', $name));
+        }
+    }
+
+    /**
+     * Get the resource path.
+     *
+     * @param $resource
+     * 
+     * @return string
+     */
+    protected function resolveClassPath($resource)
+    {
+        return 'MapboxApi\\Api\\' . ucfirst($resource);
     }
 
     /**
