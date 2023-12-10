@@ -4,6 +4,11 @@ namespace MapboxApi\HttpClient;
 
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Wrapper for PSR-7 (ResponseInterface).
+ * 
+ * @author Liam Claridge <lclaridge4@gmail.com>
+ */
 final class Response
 {
     /**

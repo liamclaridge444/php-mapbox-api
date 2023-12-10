@@ -6,6 +6,11 @@ use Exception;
 use MapboxApi\Client;
 use MapboxApi\HttpClient\Response;
 
+/**
+ * Base class for all API classes.
+ * 
+ * @author Liam Claridge <lclaridge4@gmail.com>
+ */
 abstract class AbstractApi
 {
     /**

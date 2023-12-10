@@ -8,6 +8,8 @@ use MapboxApi\HttpClient\Response;
  * Datasets API.
  * 
  * @link   https://docs.mapbox.com/api/maps/datasets/
+ * 
+ * @author Liam Claridge <lclaridge4@gmail.com>
  */
 class Datasets extends AbstractApi
 {
