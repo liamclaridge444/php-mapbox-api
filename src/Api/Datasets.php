@@ -2,6 +2,8 @@
 
 namespace MapboxApi\Api;
 
+use MapboxApi\HttpClient\Response;
+
 /**
  * Datasets API.
  * 
@@ -19,17 +21,44 @@ class Datasets extends AbstractApi
      */
     const API_NAME = 'datasets';
 
-    public function list(array $parameters = [])
+    /**
+     * List all the datasets that belong to a particular account. This endpoint supports pagination.
+     * 
+     * @link https://docs.mapbox.com/api/maps/datasets/#list-datasets
+     * 
+     * @param array $parameters
+     * 
+     * @return Response
+     */
+    public function list(array $parameters = []): Response
     {
         return $this->get(sprintf('/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username()), $parameters);
     }
 
-    public function retrieve(string $datasetId)
+    /**
+     * Retrieve information about a single existing dataset.
+     * 
+     * @link https://docs.mapbox.com/api/maps/datasets/#retrieve-a-dataset
+     * 
+     * @param string $datasetId
+     * 
+     * @return Response
+     */
+    public function retrieve(string $datasetId): Response
     {
         return $this->get(sprintf('/%s/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username(), $datasetId));
     }
 
-    public function create(array $data)
+    /**
+     * Create a new, empty dataset.
+     * 
+     * @link https://docs.mapbox.com/api/maps/datasets/#create-a-dataset
+     * 
+     * @param array $data
+     * 
+     * @return Response
+     */
+    public function create(array $data): Response
     {
         return $this->post(sprintf('/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username()), $data);
     }

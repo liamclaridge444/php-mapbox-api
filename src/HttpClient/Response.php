@@ -16,12 +16,18 @@ final class Response
         $this->response = $response;
     }
 
-    public function getStatusCode()
+    /**
+     * @return int
+     */
+    public function getStatusCode(): int
     {
         return $this->response->getStatusCode();
     }
 
-    public function getHeaders()
+    /**
+     * @return array
+     */
+    public function getHeaders(): array
     {
         return $this->response->getHeaders();
     }
