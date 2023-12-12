@@ -1,4 +1,6 @@
 # PHP Mapbox API
+[![CI](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml/badge.svg)](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml)
+
 A wrapper for the Mapbox API, written in PHP.
 
 Inspiration for this project was taken from [KnpLabs/php-github-api](https://github.com/KnpLabs/php-github-api).
