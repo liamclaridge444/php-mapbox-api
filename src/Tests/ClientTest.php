@@ -9,6 +9,9 @@ use MapboxApi\Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 
+/**
+ * @author Liam Claridge <lclaridge4@gmail.com>
+ */
 class ClientTest extends TestCase
 {
     /**
