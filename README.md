@@ -1,5 +1,5 @@
 # PHP Mapbox API
-[![CI](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml/badge.svg)](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/liamclaridge444/php-mapbox-api/branch/main/graph/badge.svg)](https://codecov.io/gh/liamclaridge444/php-mapbox-api)
+[![CI](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml/badge.svg)](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/liamclaridge444/php-mapbox-api/graph/badge.svg?token=VOKUQBV77A)](https://codecov.io/gh/liamclaridge444/php-mapbox-api)
 
 A wrapper for the Mapbox API, written in PHP.
 
