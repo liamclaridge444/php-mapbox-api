@@ -43,7 +43,7 @@ final class Response
     public function getContent()
     {
         $body = $this->response->getBody()->__toString();
-        if (strpos($this->response->getHeaderLine('Content-Type'), 'application/json') === 0) {
+        if ($this->response->getHeaderLine('Content-Type') === 'application/json') {
             $content = json_decode($body, true);
             if (JSON_ERROR_NONE === json_last_error()) {
                 return $content;
