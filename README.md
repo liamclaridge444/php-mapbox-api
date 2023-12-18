@@ -6,17 +6,17 @@ A wrapper for the Mapbox API, written in PHP.
 Inspiration for this project was taken from [KnpLabs/php-github-api](https://github.com/KnpLabs/php-github-api).
 
 ## Installation
-You can install the package via `composer require` command:
+You can install the package via the `composer require` command:
 
 ```shell
 composer require liamclaridge444/php-mapbox-api
 ```
 
-Or simply add it to your composer.json dependences and run `composer update`:
+Or add it to your composer.json file and run `composer update`:
 
 ```json
 "require": {
-    "liamclaridge444/php-mapbox-api": "^1.0"
+    "liamclaridge444/php-mapbox-api": "^0.1"
 }
 ```
 
