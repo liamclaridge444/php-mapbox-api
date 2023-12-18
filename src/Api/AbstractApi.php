@@ -45,6 +45,11 @@ abstract class AbstractApi
         $accessToken = $this->client->getAccessToken();
 
         $parts = explode('.', $accessToken);
+
+        if (count($parts) !== 3) {
+            throw new Exception('Invalid token');
+        }
+
         $rawPayload = $parts[1];
 
         if (empty($rawPayload)) {
