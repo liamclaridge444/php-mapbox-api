@@ -65,10 +65,20 @@ class Datasets extends AbstractApi
         return $this->post(sprintf('/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username()), $data);
     }
 
-    /*public function update(string $datasetId, array $data)
+    /**
+     * Update the properties of a specific dataset.
+     * 
+     * @link https://docs.mapbox.com/api/maps/datasets/#update-a-dataset
+     * 
+     * @param string $datasetId
+     * @param array  $data
+     * 
+     * @return Response
+     */
+    public function update(string $datasetId, array $data)
     {
-        return $this->patch(sprintf('/datasets/%s/%s/%s', $this->apiVersion, $this->username(), $datasetId), $data);
-    }*/
+        return $this->patch(sprintf('/%s/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username(), $datasetId), $data);
+    }
 
     /*public function delete(string $datasetId, array $data)
     {
