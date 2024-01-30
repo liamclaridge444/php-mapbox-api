@@ -96,4 +96,20 @@ abstract class AbstractApi
 
         return new Response($result);
     }
+
+    /**
+     * Send a PATCH request with JSON-encoded parameters.
+     *
+     * @param string $path           Request path.
+     * @param array  $parameters     PATCH parameters to be JSON encoded.
+     * @param array  $requestHeaders Request headers.
+     *
+     * @return Response
+     */
+    public function patch(string $endpoint, array $parameters, array $requestHeaders = []): Response
+    {
+        $result = $this->client->getHttpClient()->patch($endpoint, $requestHeaders, json_encode($parameters));
+
+        return new Response($result);
+    }
 }
