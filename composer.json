@@ -1,5 +1,5 @@
 {
-    "name": "liamclaridge444/mapbox-api",
+    "name": "liamclaridge444/php-mapbox-api",
     "description": "A PHP wrapper for the Mapbox API",
     "keywords": ["mapbox", "api"],
     "type": "library",
@@ -23,7 +23,8 @@
         "psr/http-factory-implementation": "^1.0",
         "psr/http-message": "^1.0",
         "symfony/polyfill-php80": "^1.17",
-        "symfony/deprecation-contracts": "^2.2|^3.0"
+        "symfony/deprecation-contracts": "^2.2|^3.0",
+        "lcobucci/jwt": "^5.2"
     },
     "require-dev": {
         "symfony/cache": "^5.1.8",
