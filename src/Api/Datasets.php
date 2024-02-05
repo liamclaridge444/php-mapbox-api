@@ -80,8 +80,17 @@ class Datasets extends AbstractApi
         return $this->patch(sprintf('/%s/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username(), $datasetId), $data);
     }
 
-    /*public function delete(string $datasetId, array $data)
+    /**
+     * Delete a specific dataset.
+     * 
+     * @link https://docs.mapbox.com/api/maps/datasets/#delete-a-dataset
+     * 
+     * @param string $datasetId
+     * 
+     * @return Response
+     */
+    public function remove(string $datasetId)
     {
-        return $this->delete(sprintf('/datasets/%s/%s/%s', $this->apiVersion, $this->username(), $datasetId), $data);
-    }*/
+        return $this->delete(sprintf('/%s/%s/%s/%s', self::API_NAME, self::API_VERSION, $this->username(), $datasetId));
+    }
 }
