@@ -112,4 +112,20 @@ abstract class AbstractApi
 
         return new Response($result);
     }
+
+    /**
+     * Send a DELETE request with JSON-encoded parameters.
+     *
+     * @param string $path           Request path.
+     * @param array  $parameters     POST parameters to be JSON encoded.
+     * @param array  $requestHeaders Request headers.
+     *
+     * @return Response
+     */
+    public function delete(string $endpoint, array $parameters = [], array $requestHeaders = []): Response
+    {
+        $result = $this->client->getHttpClient()->delete($endpoint, $requestHeaders, json_encode($parameters));
+
+        return new Response($result);
+    }
 }
