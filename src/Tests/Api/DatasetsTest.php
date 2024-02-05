@@ -271,6 +271,54 @@ class DatasetsTest extends TestCase
     }
 
     /**
+     * @test ->remove()
+     */
+    public function testRemove()
+    {
+        $mockStreamInterface = $this->createMock(StreamInterface::class);
+        $mockStreamInterface->expects($this->once())
+            ->method('__toString')
+            ->willReturn('');
+
+        $mockResponse = $this->createMock(ResponseInterface::class);
+        $mockResponse->expects($this->once())
+            ->method('getStatusCode')
+            ->willReturn(204);
+        $mockResponse->expects($this->once())
+            ->method('getBody')
+            ->willReturn($mockStreamInterface);
+
+        $response = new Response($mockResponse);
+
+        $username = 'scothis';
+        $datasetId = '1234';
+        $endpoint = sprintf('/%s/%s/%s/%s', Datasets::API_NAME, Datasets::API_VERSION, $username, $datasetId);
+        $accessToken = 'pk.eyJ1Ijoic2NvdGhpcyIsImEiOiJjaWp1Y2ltYmUwMDBicmJrdDQ4ZDBkaGN4In0.sbihZCZJ56-fsFNKHXF8YQ';
+
+        $mockClient = $this->getMockBuilder(Client::class)
+            ->setConstructorArgs([$accessToken])
+            ->getMock();
+        $mockClient->expects($this->once())
+            ->method('getAccessToken')
+            ->willReturn($accessToken);
+
+        $mockDatasets = $this->getMockBuilder(Datasets::class)
+            ->setConstructorArgs([$mockClient])
+            ->onlyMethods(['delete'])
+            ->getMock();
+
+        $mockDatasets->expects($this->once())
+            ->method('delete')
+            ->with($endpoint)
+            ->willReturn($response);
+
+        $apiResponse = $mockDatasets->remove('1234');
+
+        $this->assertSame(204, $apiResponse->getStatusCode());
+        $this->assertSame('', $apiResponse->getContent());
+    }
+
+    /**
      * @link: https://docs.mapbox.com/api/maps/datasets/#example-response-list-datasets
      */
     private function mockListResponseData(): string

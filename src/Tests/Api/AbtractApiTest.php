@@ -179,4 +179,29 @@ class AbstractApiTest extends TestCase
 
         $this->assertInstanceOf(Response::class, $response);
     }
+
+    /**
+     * @test ->delete()
+     */
+    public function testDelete()
+    {
+        $responseInterface = $this->createMock(ResponseInterface::class);
+
+        $mockHttpClientInterface = $this->createMock(HttpMethodsClientInterface::class);
+        $mockHttpClientInterface->expects($this->once())
+            ->method('delete')
+            ->with('endpoint')
+            ->willReturn($responseInterface);
+
+        $mockClient = $this->createMock(Client::class);
+        $mockClient->expects($this->once())
+            ->method('getHttpClient')
+            ->willReturn($mockHttpClientInterface);
+        
+        $mockApiClass = $this->getMockForAbstractClass(AbstractApi::class, [$mockClient]);
+
+        $response = $mockApiClass->delete('endpoint');
+
+        $this->assertInstanceOf(Response::class, $response);
+    }
 }
