@@ -1,9 +1,14 @@
 # PHP Mapbox API
 [![CI](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml/badge.svg)](https://github.com/liamclaridge444/php-mapbox-api/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/liamclaridge444/php-mapbox-api/graph/badge.svg?token=VOKUQBV77A)](https://codecov.io/gh/liamclaridge444/php-mapbox-api)
 
-A wrapper for the Mapbox API, written in PHP.
+An easy to use wrapper for the Mapbox API, written in PHP.
 
 Inspiration for this project was taken from [KnpLabs/php-github-api](https://github.com/KnpLabs/php-github-api).
+
+## Requirements
+- PHP ^8.1
+- A [PSR-17 implementation](https://packagist.org/providers/psr/http-factory-implementation)
+- A [PSR-18 implementation](https://packagist.org/providers/psr/http-client-implementation)
 
 ## Installation
 You can install the package via the `composer require` command:
@@ -12,18 +17,15 @@ You can install the package via the `composer require` command:
 composer require liamclaridge444/php-mapbox-api
 ```
 
-Or add it to your composer.json file and run `composer update`:
-
-```json
-"require": {
-    "liamclaridge444/php-mapbox-api": "^0.1"
-}
-```
-
 ## Usage
+
+Instantiate a Mapbox client with your access token, then chain the API name and method (see example below).
+
 ```php
 $accessToken = 'your-access-token';
 
 $client = new Mapbox($accessToken);
+
+$response = $client->datasets()->list();
 
 ```
